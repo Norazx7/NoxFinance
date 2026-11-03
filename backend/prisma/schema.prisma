@@ -1,0 +1,249 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CASH
+  INVESTMENT
+  OTHER
+}
+
+enum CardType {
+  CREDIT
+  DEBIT
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum CategoryKind {
+  INCOME
+  EXPENSE
+}
+
+enum GoalStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum RecurringFrequency {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  refreshTokens        RefreshToken[]
+  passwordResetTokens  PasswordResetToken[]
+  accounts             Account[]
+  cards                Card[]
+  categories           Category[]
+  transactions         Transaction[]
+  budgets              Budget[]
+  goals                Goal[]
+  recurringExpenses    RecurringExpense[]
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  tokenHash String
+  userId    String
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id           String      @id @default(cuid())
+  userId       String
+  name         String
+  type         AccountType @default(CHECKING)
+  /// Saldo em centavos (BRL)
+  balanceCents Int         @default(0)
+  currency     String      @default("BRL")
+  color        String      @default("#10B981")
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  cards        Card[]
+
+  @@index([userId])
+}
+
+model Card {
+  id              String   @id @default(cuid())
+  userId          String
+  accountId       String?
+  name            String
+  type            CardType @default(CREDIT)
+  lastFourDigits  String?
+  /// Limite em centavos
+  limitCents      Int      @default(0)
+  /// Valor utilizado em centavos
+  usedCents       Int      @default(0)
+  closingDay      Int?
+  dueDay          Int?
+  color           String   @default("#34D399")
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account      Account?      @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  transactions Transaction[]
+
+  @@index([userId])
+}
+
+model Category {
+  id        String       @id @default(cuid())
+  userId    String
+  name      String
+  kind      CategoryKind
+  icon      String?
+  color     String       @default("#6B7280")
+  isSystem  Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  user              User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions      Transaction[]
+  budgetLimits      BudgetCategoryLimit[]
+  recurringExpenses RecurringExpense[]
+
+  @@unique([userId, name, kind])
+  @@index([userId])
+}
+
+model Transaction {
+  id          String          @id @default(cuid())
+  userId      String
+  accountId   String
+  cardId      String?
+  categoryId  String?
+  type        TransactionType
+  /// Valor sempre positivo em centavos; o tipo define o sinal contábil
+  amountCents Int
+  description String
+  notes       String?
+  occurredAt  DateTime
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account  Account   @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  card     Card?     @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@index([userId, occurredAt])
+  @@index([userId, type])
+  @@index([categoryId])
+  @@index([accountId])
+}
+
+model Budget {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  year        Int
+  month       Int
+  /// Limite total mensal em centavos
+  limitCents  Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user   User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  limits BudgetCategoryLimit[]
+
+  @@unique([userId, year, month, name])
+  @@index([userId, year, month])
+}
+
+model BudgetCategoryLimit {
+  id          String @id @default(cuid())
+  budgetId    String
+  categoryId  String
+  /// Limite da categoria em centavos
+  limitCents  Int
+
+  budget   Budget   @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([budgetId, categoryId])
+}
+
+model Goal {
+  id              String     @id @default(cuid())
+  userId          String
+  name            String
+  description     String?
+  /// Meta em centavos
+  targetCents     Int
+  /// Valor já acumulado em centavos
+  currentCents    Int        @default(0)
+  deadline        DateTime?
+  status          GoalStatus @default(ACTIVE)
+  color           String     @default("#10B981")
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+}
+
+model RecurringExpense {
+  id           String             @id @default(cuid())
+  userId       String
+  categoryId   String?
+  name         String
+  /// Valor em centavos
+  amountCents  Int
+  frequency    RecurringFrequency @default(MONTHLY)
+  nextDueDate  DateTime
+  isActive     Boolean            @default(true)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  @@index([userId, isActive])
+}

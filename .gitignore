@@ -1,0 +1,10 @@
+node_modules
+.expo
+dist
+coverage
+.env
+*.log
+.DS_Store
+backend/dist
+mobile/.expo
+**/node_modules

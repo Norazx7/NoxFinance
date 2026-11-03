@@ -1,0 +1,13 @@
+{
+  "name": "nox-finance",
+  "private": true,
+  "version": "1.0.0",
+  "description": "NOX FINANCE — gestão financeira pessoal com NOX AI",
+  "scripts": {
+    "api": "npm --prefix backend run start:dev",
+    "mobile": "npm --prefix mobile run web",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test",
+    "presentation": "python3 scripts/generate_presentation.py"
+  }
+}
