@@ -103,6 +103,9 @@ Foram implementados testes unitários para utilitários monetários e validaçã
 - [Requisitos](docs/REQUISITOS.md)
 - [API](docs/api/API.md)
 - [Apresentação](docs/apresentacao/ROTEIRO_APRESENTACAO.md)
+- [Roteiro de Extensão](docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.md)
+  - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
+  - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.pdf`
   - `docs/apresentacao/NOX_FINANCE_Apresentacao.pptx`
   - `docs/apresentacao/NOX_FINANCE_Apresentacao.pdf`
 
