@@ -84,3 +84,12 @@ Instrumento previsto; resultados **pendente / a anexar**.
 ### 3.2 Relato individual — Witorio Bandeira Couto
 
 Contextualização, metodologia, resultados, reflexão e considerações finais conforme documento DOCX completo.
+
+
+## Evidências de divulgação (LinkedIn, GitHub e arquivo)
+
+Para comprovação acadêmica da divulgação do projeto:
+
+1. **Post no LinkedIn** — texto em `docs/divulgacao/POST_LINKEDIN_NOX_FINANCE.md` (publicação e print: pendente do discente).
+2. **Link do GitHub** — preencher em `docs/divulgacao/LINKS.md` após criar/publicar o repositório.
+3. **Arquivo do Roteiro de Extensão** — `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx` / `.pdf` (cópias em `docs/divulgacao/arquivos/`).

@@ -106,6 +106,17 @@ Foram implementados testes unitários para utilitários monetários e validaçã
 - [Roteiro de Extensão](docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.md)
   - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
   - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.pdf`
+
+## Divulgação acadêmica (LinkedIn + GitHub + arquivo)
+
+Pacote em `docs/divulgacao/`:
+
+1. **Post LinkedIn:** `docs/divulgacao/POST_LINKEDIN_NOX_FINANCE.md` (copiar de `POST_LINKEDIN_COPIAR.txt`)
+2. **Link GitHub:** preencher em `docs/divulgacao/LINKS.md` após publicar o repositório
+3. **Arquivo (Roteiro de Extensão):** `docs/divulgacao/arquivos/NOX_FINANCE_Roteiro_de_Extensao.docx` (e PDF)
+
+Checklist: `docs/divulgacao/EVIDENCIAS_OBRIGATORIAS.md`
+
   - `docs/apresentacao/NOX_FINANCE_Apresentacao.pptx`
   - `docs/apresentacao/NOX_FINANCE_Apresentacao.pdf`
 
