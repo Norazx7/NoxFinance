@@ -75,7 +75,7 @@ async function main() {
       name: 'Cartão NOX',
       type: 'CREDIT',
       lastFourDigits: '4242',
-      limitCents: 500000,
+      limitCents: 200000,
       usedCents: 0,
       closingDay: 10,
       dueDay: 17,
@@ -86,6 +86,7 @@ async function main() {
   const y = now.getFullYear();
   const m = now.getMonth();
 
+  // Valores de demonstração mais realistas (~R$ 2.000–2.500 de saldo total).
   const txs: Array<{
     type: 'INCOME' | 'EXPENSE';
     amountCents: number;
@@ -98,7 +99,7 @@ async function main() {
   }> = [
     {
       type: 'INCOME',
-      amountCents: 650000,
+      amountCents: 220000,
       description: 'Salário mensal (exemplo)',
       category: 'Salário',
       day: 5,
@@ -106,15 +107,15 @@ async function main() {
     },
     {
       type: 'INCOME',
-      amountCents: 80000,
-      description: 'Projeto freelance (exemplo)',
+      amountCents: 15000,
+      description: 'Freela pontual (exemplo)',
       category: 'Freelance',
       day: 18,
       accountId: checking.id,
     },
     {
       type: 'EXPENSE',
-      amountCents: 180000,
+      amountCents: 85000,
       description: 'Aluguel (exemplo)',
       category: 'Moradia',
       day: 8,
@@ -122,7 +123,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 65000,
+      amountCents: 28000,
       description: 'Supermercado (exemplo)',
       category: 'Alimentação',
       day: 12,
@@ -131,7 +132,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 22000,
+      amountCents: 9000,
       description: 'Transporte app (exemplo)',
       category: 'Transporte',
       day: 14,
@@ -139,7 +140,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 15000,
+      amountCents: 6000,
       description: 'Cinema e lazer (exemplo)',
       category: 'Lazer',
       day: 20,
@@ -148,7 +149,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 12000,
+      amountCents: 4000,
       description: 'Farmácia (exemplo)',
       category: 'Saúde',
       day: 22,
@@ -156,7 +157,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 29900,
+      amountCents: 5000,
       description: 'Curso online (exemplo)',
       category: 'Educação',
       day: 16,
@@ -164,7 +165,7 @@ async function main() {
     },
     {
       type: 'INCOME',
-      amountCents: 650000,
+      amountCents: 220000,
       description: 'Salário mês anterior (exemplo)',
       category: 'Salário',
       day: 5,
@@ -173,7 +174,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 175000,
+      amountCents: 85000,
       description: 'Aluguel mês anterior (exemplo)',
       category: 'Moradia',
       day: 8,
@@ -182,7 +183,7 @@ async function main() {
     },
     {
       type: 'EXPENSE',
-      amountCents: 48000,
+      amountCents: 25000,
       description: 'Mercado mês anterior (exemplo)',
       category: 'Alimentação',
       day: 15,
@@ -190,9 +191,45 @@ async function main() {
       monthOffset: -1,
     },
     {
+      type: 'EXPENSE',
+      amountCents: 8000,
+      description: 'Transporte mês anterior (exemplo)',
+      category: 'Transporte',
+      day: 12,
+      accountId: checking.id,
+      monthOffset: -1,
+    },
+    {
+      type: 'EXPENSE',
+      amountCents: 15000,
+      description: 'Lazer mês anterior (exemplo)',
+      category: 'Lazer',
+      day: 18,
+      accountId: checking.id,
+      monthOffset: -1,
+    },
+    {
+      type: 'EXPENSE',
+      amountCents: 12000,
+      description: 'Contas mês anterior (exemplo)',
+      category: 'Educação',
+      day: 10,
+      accountId: checking.id,
+      monthOffset: -1,
+    },
+    {
+      type: 'EXPENSE',
+      amountCents: 30000,
+      description: 'Extras mês anterior (exemplo)',
+      category: 'Alimentação',
+      day: 22,
+      accountId: checking.id,
+      monthOffset: -1,
+    },
+    {
       type: 'INCOME',
-      amountCents: 200000,
-      description: 'Reserva inicial (exemplo)',
+      amountCents: 80000,
+      description: 'Reserva na poupança (exemplo)',
       category: 'Freelance',
       day: 2,
       accountId: savings.id,
@@ -234,12 +271,12 @@ async function main() {
       name: 'Orçamento mensal',
       year: y,
       month: m + 1,
-      limitCents: 400000,
+      limitCents: 150000,
       limits: {
         create: [
-          { categoryId: byName['Alimentação'].id, limitCents: 80000 },
-          { categoryId: byName['Lazer'].id, limitCents: 30000 },
-          { categoryId: byName['Transporte'].id, limitCents: 40000 },
+          { categoryId: byName['Alimentação'].id, limitCents: 35000 },
+          { categoryId: byName['Lazer'].id, limitCents: 10000 },
+          { categoryId: byName['Transporte'].id, limitCents: 15000 },
         ],
       },
     },
@@ -249,9 +286,9 @@ async function main() {
     data: {
       userId: user.id,
       name: 'Reserva de emergência',
-      description: 'Meta de exemplo — 3 meses de despesas',
-      targetCents: 900000,
-      currentCents: 250000,
+      description: 'Meta de exemplo — juntar R$ 3.000',
+      targetCents: 300000,
+      currentCents: 80000,
       deadline: new Date(y + 1, 5, 1),
     },
   });
@@ -260,7 +297,7 @@ async function main() {
     data: {
       userId: user.id,
       name: 'Aluguel',
-      amountCents: 180000,
+      amountCents: 85000,
       frequency: 'MONTHLY',
       nextDueDate: new Date(y, m + 1, 8),
       categoryId: byName['Moradia'].id,
