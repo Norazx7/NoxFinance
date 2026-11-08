@@ -1,0 +1,23 @@
+Acabei de concluir o MVP acadêmico do NOX FINANCE
+Seu dinheiro. Sua estratégia. Seu controle.
+
+É um aplicativo Android de gestão financeira pessoal com inteligência artificial integrada (NOX AI), desenvolvido na disciplina de Programação Para Dispositivos Móveis em Android (Estácio de Sá — Goiânia).
+
+O que o projeto entrega:
+• Dashboard com saldo, receitas, despesas e comparação mensal
+• Contas, cartões, categorias e movimentações
+• Orçamentos, metas, despesas recorrentes e previsão de caixa
+• Relatórios financeiros
+• NOX AI para perguntas e simulações com base em dados reais do usuário
+
+Diferencial técnico: os cálculos financeiros ficam no backend (valores em centavos). A IA interpreta e explica — sem inventar números e sem alterar movimentações sem confirmação.
+
+Stack: React Native + Expo · NestJS · PostgreSQL · Prisma · JWT · TypeScript
+
+Código no GitHub:
+👉 [COLE AQUI O LINK DO REPOSITÓRIO]
+
+Arquivo do Roteiro de Extensão (DOCX/PDF) no repositório:
+docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx
+
+#NOXFinance #Android #ReactNative #NestJS #FullStack #InteligenciaArtificial #EstacioDeSa #ADS #DesenvolvimentoDeSoftware

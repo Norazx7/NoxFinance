@@ -16,6 +16,10 @@ Aplicativo Android de gestão financeira pessoal com inteligência artificial in
 
 O NOX FINANCE centraliza receitas, despesas, contas, cartões, orçamentos, metas e relatórios em um único ambiente. O diferencial é a **NOX AI**, que interpreta apenas dados financeiros autorizados e já calculados pelo backend — sem inventar valores, sem SQL arbitrário e sem alterar movimentações sem confirmação.
 
+## Pasta de entrega (tudo junto)
+
+`ENTREGA_ACADEMICA/` — apresentação, roteiros, documentação, extensão, LinkedIn e capturas.
+
 ## Estrutura do repositório
 
 ```
