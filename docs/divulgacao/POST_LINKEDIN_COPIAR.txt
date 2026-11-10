@@ -15,7 +15,7 @@ Diferencial técnico: os cálculos financeiros ficam no backend (valores em cent
 Stack: React Native + Expo · NestJS · PostgreSQL · Prisma · JWT · TypeScript
 
 Código no GitHub:
-👉 [COLE AQUI O LINK DO REPOSITÓRIO]
+👉 https://github.com/Norazx7/NoxFinance
 
 Arquivo do Roteiro de Extensão (DOCX/PDF) no repositório:
 docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx

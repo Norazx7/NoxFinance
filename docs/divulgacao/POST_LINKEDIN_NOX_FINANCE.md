@@ -25,7 +25,7 @@ Diferencial técnico: os cálculos financeiros ficam no backend (valores em cent
 Stack: React Native + Expo · NestJS · PostgreSQL · Prisma · JWT · TypeScript
 
 Código no GitHub:  
-👉 **[COLE AQUI O LINK DO REPOSITÓRIO]**
+👉 https://github.com/Norazx7/NoxFinance
 
 Arquivo do Roteiro de Extensão (DOCX/PDF) disponível no repositório em:  
 `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
@@ -39,7 +39,7 @@ Arquivo do Roteiro de Extensão (DOCX/PDF) disponível no repositório em:
 Desenvolvi o **NOX FINANCE**, app Android de finanças pessoais com NOX AI.  
 MVP acadêmico (Estácio — Goiânia/ADS): dashboard, contas, cartões, orçamentos, metas, relatórios e assistente inteligente baseado em dados reais do usuário.
 
-GitHub: **[COLE AQUI O LINK DO REPOSITÓRIO]**  
+GitHub: https://github.com/Norazx7/NoxFinance  
 Roteiro de Extensão: `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
 
 #Android #FullStack #ReactNative #NestJS #IA
@@ -49,7 +49,7 @@ Roteiro de Extensão: `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
 ## Como publicar (checklist)
 
 1. Crie/publique o repositório no GitHub (botão **Create repo** no projeto, se ainda estiver sem repo público).
-2. Substitua `[COLE AQUI O LINK DO REPOSITÓRIO]` pelo link real.
+2. Substitua `https://github.com/Norazx7/NoxFinance` pelo link real.
 3. Publique o post no LinkedIn.
 4. Salve captura de tela do post publicado em:
    `docs/divulgacao/evidencias/print_post_linkedin.png`

@@ -1,5 +1,8 @@
 # NOX FINANCE
 
+**Repositório:** https://github.com/Norazx7/NoxFinance
+
+
 **Seu dinheiro. Sua estratégia. Seu controle.**
 
 Aplicativo Android de gestão financeira pessoal com inteligência artificial integrada (**NOX AI**).
