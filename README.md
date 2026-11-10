@@ -2,7 +2,6 @@
 
 **Repositório:** https://github.com/Norazx7/NoxFinance
 
-
 **Seu dinheiro. Sua estratégia. Seu controle.**
 
 Aplicativo Android de gestão financeira pessoal com inteligência artificial integrada (**NOX AI**).
@@ -18,10 +17,6 @@ Aplicativo Android de gestão financeira pessoal com inteligência artificial in
 ## O que é
 
 O NOX FINANCE centraliza receitas, despesas, contas, cartões, orçamentos, metas e relatórios em um único ambiente. O diferencial é a **NOX AI**, que interpreta apenas dados financeiros autorizados e já calculados pelo backend — sem inventar valores, sem SQL arbitrário e sem alterar movimentações sem confirmação.
-
-## Pasta de entrega (tudo junto)
-
-`ENTREGA_ACADEMICA/` — apresentação, roteiros, documentação, extensão, LinkedIn e capturas.
 
 ## Estrutura do repositório
 
@@ -109,7 +104,6 @@ Foram implementados testes unitários para utilitários monetários e validaçã
 - [Arquitetura e modelo de dados](docs/ARQUITETURA.md)
 - [Requisitos](docs/REQUISITOS.md)
 - [API](docs/api/API.md)
-- [Apresentação](docs/apresentacao/ROTEIRO_APRESENTACAO.md)
 - [Roteiro de Extensão](docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.md)
   - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.docx`
   - `docs/extensao/NOX_FINANCE_Roteiro_de_Extensao.pdf`
