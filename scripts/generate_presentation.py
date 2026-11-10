@@ -387,7 +387,7 @@ def build():
         "planejamento, relatórios e NOX AI. Todas estão implementadas na API e refletidas no app.",
     )
 
-    # 8 UX
+    # 8 UX — telas reais do aplicativo
     s = prs.slides.add_slide(prs.slide_layouts[6])
     set_slide_bg(s)
     accent_bar(s)
@@ -395,47 +395,57 @@ def build():
     add_textbox(
         s,
         Inches(0.8),
-        Inches(1.05),
+        Inches(1.0),
         Inches(11.5),
-        Inches(0.5),
-        [("Identidade visual premium em tema escuro com destaque esmeralda.", 15, False, MUTED, PP_ALIGN.LEFT)],
+        Inches(0.4),
+        [("Capturas reais do aplicativo NOX FINANCE (tema escuro + verde esmeralda).", 15, False, MUTED, PP_ALIGN.LEFT)],
     )
+    screens_dir = Path("/workspace/docs/apresentacao/screenshots/cropped")
     screens = [
-        ("Login / Cadastro", "Acesso seguro com JWT e recuperação de senha."),
-        ("Dashboard", "Saldo total, indicadores e últimas movimentações."),
-        ("Movimentações", "Histórico filtrável e cadastro rápido."),
-        ("NOX AI", "Perguntas naturais sobre os dados do usuário."),
+        ("Login", "Acesso seguro com JWT.", screens_dir / "nox-login.png"),
+        ("Dashboard", "Saldo e indicadores do mês.", screens_dir / "nox-dashboard.png"),
+        ("Planejamento", "Contas, orçamentos e metas.", screens_dir / "nox-planning.png"),
+        ("NOX AI", "Perguntas com fatos do backend.", screens_dir / "nox-ai.png"),
     ]
-    x = 0.8
-    for title, desc in screens:
-        add_round(s, Inches(x), Inches(1.8), Inches(2.85), Inches(4.2), CARD)
-        add_round(s, Inches(x + 0.35), Inches(2.15), Inches(2.15), Inches(2.5), RGBColor(0x0F, 0x1A, 0x16))
-        add_textbox(
-            s,
-            Inches(x + 0.45),
-            Inches(2.9),
-            Inches(1.95),
-            Inches(1.2),
-            [("NOX", 20, True, EMERALD, PP_ALIGN.CENTER)],
-        )
+    x = 0.55
+    for title, desc, img_path in screens:
+        add_round(s, Inches(x), Inches(1.45), Inches(3.0), Inches(5.35), CARD)
+        if img_path.exists():
+            s.shapes.add_picture(
+                str(img_path),
+                Inches(x + 0.22),
+                Inches(1.65),
+                width=Inches(2.55),
+                height=Inches(3.85),
+            )
+        else:
+            add_round(s, Inches(x + 0.22), Inches(1.65), Inches(2.55), Inches(3.85), RGBColor(0x0F, 0x1A, 0x16))
+            add_textbox(
+                s,
+                Inches(x + 0.35),
+                Inches(3.2),
+                Inches(2.3),
+                Inches(0.5),
+                [("tela indisponível", 12, False, MUTED, PP_ALIGN.CENTER)],
+            )
         add_textbox(
             s,
             Inches(x + 0.2),
-            Inches(4.85),
-            Inches(2.45),
-            Inches(1.0),
+            Inches(5.6),
+            Inches(2.6),
+            Inches(0.95),
             [
                 (title, 14, True, WHITE, PP_ALIGN.LEFT),
-                (desc, 12, False, MUTED, PP_ALIGN.LEFT),
+                (desc, 11, False, MUTED, PP_ALIGN.LEFT),
             ],
         )
-        x += 3.05
+        x += 3.15
     footer(s, 8)
     add_notes(
         s,
-        "A experiência segue tema escuro premium. As telas principais — login, dashboard, "
-        "movimentações e NOX AI — priorizam clareza, hierarquia visual e feedback de estados "
-        "vazios, carregamento e erro.",
+        "Aqui mostro as telas reais do app: login, dashboard com saldo, planejamento e NOX AI. "
+        "A identidade visual é tema escuro premium com destaque esmeralda. "
+        "Se der tempo, abro o app ao vivo depois deste slide.",
     )
 
     # 9 ARQUITETURA
